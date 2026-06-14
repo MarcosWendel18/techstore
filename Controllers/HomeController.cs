@@ -7,9 +7,15 @@ namespace TechStore.Controllers;
 public class HomeController : Controller
 {
     public IActionResult Index()
-    {
-        return View();
-    }
+        {
+            if (HttpContext.Session.GetString("Usuario") == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            return View();
+        }
+      
     public IActionResult Sobre()
     {
         return View();
@@ -24,4 +30,5 @@ public class HomeController : Controller
     {
         return View();
     }
+    
 }

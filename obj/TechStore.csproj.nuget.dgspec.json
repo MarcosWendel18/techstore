@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Marcos\\OneDrive\\Documentos\\faculdade\\5_Sem\\progamacao_web_II\\web_II\\techstore\\TechStore.csproj": {}
+    "C:\\Users\\Marcos\\OneDrive\\Documentos\\faculdade\\5_Sem\\progamacao_web_II\\web_II\\TechStore\\TechStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Marcos\\OneDrive\\Documentos\\faculdade\\5_Sem\\progamacao_web_II\\web_II\\techstore\\TechStore.csproj": {
+    "C:\\Users\\Marcos\\OneDrive\\Documentos\\faculdade\\5_Sem\\progamacao_web_II\\web_II\\TechStore\\TechStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marcos\\OneDrive\\Documentos\\faculdade\\5_Sem\\progamacao_web_II\\web_II\\techstore\\TechStore.csproj",
+        "projectUniqueName": "C:\\Users\\Marcos\\OneDrive\\Documentos\\faculdade\\5_Sem\\progamacao_web_II\\web_II\\TechStore\\TechStore.csproj",
         "projectName": "TechStore",
-        "projectPath": "C:\\Users\\Marcos\\OneDrive\\Documentos\\faculdade\\5_Sem\\progamacao_web_II\\web_II\\techstore\\TechStore.csproj",
+        "projectPath": "C:\\Users\\Marcos\\OneDrive\\Documentos\\faculdade\\5_Sem\\progamacao_web_II\\web_II\\TechStore\\TechStore.csproj",
         "packagesPath": "C:\\Users\\Marcos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marcos\\OneDrive\\Documentos\\faculdade\\5_Sem\\progamacao_web_II\\web_II\\techstore\\obj\\",
+        "outputPath": "C:\\Users\\Marcos\\OneDrive\\Documentos\\faculdade\\5_Sem\\progamacao_web_II\\web_II\\TechStore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Marcos\\AppData\\Roaming\\NuGet\\NuGet.Config"
