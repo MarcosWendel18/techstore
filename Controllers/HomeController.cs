@@ -8,12 +8,13 @@ public class HomeController : Controller
 {
     public IActionResult Index()
         {
-            if (HttpContext.Session.GetString("Usuario") == null)
+            /*if (HttpContext.Session.GetString("Usuario") == null)
             {
                 return RedirectToAction("Login", "Auth");
-            }
+            }*/
 
             return View();
+            
         }
       
     public IActionResult Sobre()
