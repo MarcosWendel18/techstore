@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TechStore.Data;
+using TechStore.Models;
 
 namespace TechStore.Controllers
 {
@@ -22,6 +23,32 @@ namespace TechStore.Controllers
             var produtos = _context.Produtos.ToList();
 
             return View(produtos);
+        }
+
+        public IActionResult Create()
+        {
+            if (HttpContext.Session.GetString("Usuario") == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Produto produto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(produto);
+            }
+
+            _context.Produtos.Add(produto);
+
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
