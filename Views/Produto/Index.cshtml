@@ -8,6 +8,18 @@
     + Novo Produto
 </a>
 
+<form method="get" asp-action="Index" class="d-flex">
+
+    <input type="text" name="pesquisa" value="@Context.Request.Query["pesquisa"]" class="form-control me-2" placeholder="Pesquisar produto..." />
+
+    <button class="btn btn-primary">
+
+        Buscar
+
+    </button>
+
+</form>
+
 <table class="table table-striped table-bordered">
 
     <thead>
@@ -38,7 +50,7 @@
 
                 <td colspan="6" class="text-center">
 
-                    Nenhum produto cadastrado.
+                    Nenhum produto encontrado.
 
                 </td>
 

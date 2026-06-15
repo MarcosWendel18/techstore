@@ -13,16 +13,25 @@ namespace TechStore.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string pesquisa)
         {
             if (HttpContext.Session.GetString("Usuario") == null)
             {
                 return RedirectToAction("Login", "Auth");
             }
 
-            var produtos = _context.Produtos.ToList();
+            var produtos = _context.Produtos.AsQueryable();
 
-            return View(produtos);
+            if (!string.IsNullOrWhiteSpace(pesquisa))
+            {
+                pesquisa = pesquisa.Trim();
+
+                produtos = produtos.Where(p =>
+                    p.Nome.ToLower().Contains(pesquisa) ||
+                    p.Categoria.ToLower().Contains(pesquisa));
+            }
+
+            return View(produtos.ToList());
         }
 
         public IActionResult Create()
@@ -95,8 +104,6 @@ namespace TechStore.Controllers
             produtoBanco.Preco = produto.Preco;
             produtoBanco.Estoque = produto.Estoque;
             produtoBanco.Imagem = produto.Imagem;
-
-            _context.SaveChanges();
 
             _context.SaveChanges();
 
