@@ -23,6 +23,7 @@ namespace TechStore.Models
         [Range(0, 9999, ErrorMessage = "O estoque deve ser um número inteiro positivo.")]
         public int Estoque { get; set; }
 
+        [StringLength(5, ErrorMessage = "A URL da imagem deve ter no máximo 200 caracteres.")]
         public string Imagem { get; set; } = "";
     }
 }

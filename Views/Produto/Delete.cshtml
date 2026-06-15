@@ -1,0 +1,49 @@
+@model TechStore.Models.Produto
+
+<h2>Excluir Produto</h2>
+
+<hr />
+
+<div class="alert alert-danger">
+
+    <h5>Deseja realmente excluir este produto?</h5>
+
+</div>
+
+<div class="card">
+
+    <div class="card-body">
+
+        <img src="https://placehold.co/400x250"/>
+
+        <h4>@Model.Nome</h4>
+
+        <p><strong>Categoria:</strong> @Model.Categoria</p>
+
+        <p><strong>Preço:</strong> R$ @Model.Preco</p>
+
+        <p><strong>Estoque:</strong> @Model.Estoque</p>
+
+    </div>
+
+</div>
+
+<br />
+
+<form asp-action="Delete">
+
+    <input type="hidden" asp-for="Id" />
+
+    <button class="btn btn-danger">
+
+        Confirmar Exclusão
+
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+
+        Cancelar
+
+    </a>
+
+</form>
