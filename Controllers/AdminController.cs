@@ -1,13 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
+using TechStore.Data;
 
 public class AdminController : Controller
 {
+    private readonly AppDbContext _context;
+
+    public AdminController(AppDbContext context)
+    {
+        _context = context;
+    }
+
     public IActionResult Index()
     {
-        if(HttpContext.Session.GetString("Usuario") == null)
+        if (HttpContext.Session.GetString("Usuario") == null)
         {
-            return RedirectToAction("Login","Auth");
+            return RedirectToAction("Login", "Auth");
         }
+
+        ViewBag.TotalProdutos = _context.Produtos.Count();
 
         return View();
     }

@@ -1,7 +1,66 @@
-<h2>Produtos</h2>
+@model IEnumerable<TechStore.Models.Produto>
 
-<p>
+<h2 class="mb-4">Nossos Produtos</h2>
 
-Em breve os produtos cadastrados aparecerão aqui.
 
-</p>
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+
+        Nenhum produto disponível no momento.
+
+    </div>
+}
+else
+{
+    <div class="row">
+
+        @foreach (var produto in Model)
+        {
+            <div class="col-md-4 mb-4">
+
+                <div class="card h-100">
+
+                    <img src="@(string.IsNullOrWhiteSpace(produto.Imagem)
+                                             ? "/img/sem-imagem.png"
+                                             : produto.Imagem)" class="card-img-top" style="height:220px; object-fit:cover;">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">
+
+                            @produto.Nome
+
+                        </h5>
+
+                        <p class="text-muted">
+
+                            @produto.Categoria
+
+                        </p>
+
+                        <p>
+
+                            @produto.Descricao
+
+                        </p>
+
+                    </div>
+
+                    <div class="card-footer">
+
+                        <strong>
+
+                            R$ @produto.Preco
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+}

@@ -1,22 +1,30 @@
 <h2>Painel Administrativo</h2>
 
 <p>
-Bem-vindo,
-@Context.Session.GetString("Usuario")
+    Bem-vindo,
+    @Context.Session.GetString("Usuario")
 </p>
 
-<a asp-controller="Produto"
-   asp-action="Index"
-   class="btn btn-primary">
+<div class="alert alert-primary">
+
+    Produtos cadastrados:
+
+    <strong>
+
+        @ViewBag.TotalProdutos
+
+    </strong>
+
+</div>
+
+<a asp-controller="Produto" asp-action="Index" class="btn btn-primary">
 
     Gerenciar Produtos
 
 </a>
 
-<a class="btn btn-danger"
-asp-controller="Auth"
-asp-action="Logout">
+<a class="btn btn-danger" asp-controller="Auth" asp-action="Logout">
 
-Logout
+    Logout
 
 </a>

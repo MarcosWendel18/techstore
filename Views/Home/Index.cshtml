@@ -1,6 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<TechStore.Models.Produto>
 
 <div class="text-center py-5">
 
@@ -10,66 +8,70 @@
         Os melhores eletrônicos para você.
     </p>
 
-    <a class="btn btn-primary">
-        Ver Produtos
+    <a class="btn btn-primary" asp-controller="Home" asp-action="Produtos">
+        Ver Catálogo
     </a>
 
 </div>
 
-<div class="row mt-5">
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
 
-    <div class="col-md-4">
-
-        <div class="card">
-
-            <img >
-
-            <div class="card-body">
-
-                <h5>Notebook Gamer</h5>
-
-                <p>Alta performance.</p>
-
-            </div>
-
-        </div>
+        Nenhum produto disponível no momento.
 
     </div>
+}
+else
+{
+    <div class="row">
 
-    <div class="col-md-4">
+        @foreach (var produto in Model)
+        {
+            <div class="col-md-4 mb-4">
 
-        <div class="card">
+                <div class="card h-100">
 
-            <img src="https://placehold.co/400x250">
+                    <img src="@(string.IsNullOrWhiteSpace(produto.Imagem)
+                                             ? "/img/sem-imagem.png"
+                                             : produto.Imagem)" class="card-img-top" style="height:220px; object-fit:cover;">
 
-            <div class="card-body">
+                    <div class="card-body">
 
-                <h5>Headset</h5>
+                        <h5 class="card-title">
 
-                <p>Som profissional.</p>
+                            @produto.Nome
+
+                        </h5>
+
+                        <p class="text-muted">
+
+                            @produto.Categoria
+
+                        </p>
+
+                        <p>
+
+                            @produto.Descricao
+
+                        </p>
+
+                    </div>
+
+                    <div class="card-footer">
+
+                        <strong>
+
+                            R$ @produto.Preco
+
+                        </strong>
+
+                    </div>
+
+                </div>
 
             </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-md-4">
-
-        <div class="card">
-
-            <img src="https://placehold.co/400x250">
-
-            <div class="card-body">
-
-                <h5>Mouse Gamer</h5>
-
-                <p>Precisão máxima.</p>
-
-            </div>
-
-        </div>
+        }
 
     </div>
-
-</div>src="https://placehold.co/400x250"
+}
