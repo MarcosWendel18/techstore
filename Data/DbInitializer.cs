@@ -12,7 +12,7 @@ public static class DbInitializer
             {
                 Nome = "Administrador",
                 Email = "admin@techstore.com",
-                Senha = "123456",
+                Senha = "admin12345",
                 Administrador = true
             });
 

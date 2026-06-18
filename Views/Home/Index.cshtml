@@ -1,15 +1,25 @@
 ﻿@model IEnumerable<TechStore.Models.Produto>
 
-<div class="text-center py-5">
+<div class="bg-dark text-white rounded p-5 mb-5 text-center shadow">
 
-    <h1>TechStore</h1>
+    <h1 class="display-4 fw-bold">
+
+        Bem-vindo à TechStore
+
+    </h1>
 
     <p class="lead">
-        Os melhores eletrônicos para você.
+
+        Tecnologia e inovação ao seu alcance.
+
     </p>
 
-    <a class="btn btn-primary" asp-controller="Home" asp-action="Produtos">
+    <a asp-controller="Home"
+       asp-action="Produtos"
+       class="btn btn-primary btn-lg">
+
         Ver Catálogo
+
     </a>
 
 </div>
@@ -26,14 +36,14 @@ else
 {
     <div class="row">
 
-        @foreach (var produto in Model)
+        @foreach (Produto produto in Model)
         {
             <div class="col-md-4 mb-4">
 
-                <div class="card h-100">
+                <div class="produto-card">
 
                     <img src="@(string.IsNullOrWhiteSpace(produto.Imagem)
-                                             ? "/img/sem-imagem.png"
+                                             ? "../src/imgs/not_defined_img_product.png"
                                              : produto.Imagem)" class="card-img-top" style="height:220px; object-fit:cover;">
 
                     <div class="card-body">

@@ -1,84 +1,85 @@
 @model TechStore.Models.Produto
 
-<h2>Editar Produto</h2>
+<div class="row justify-content-center">
+    <div class="col-md-6">
 
-<hr />
+        <h2>Editar Produto</h2>
 
-<form asp-action="Edit" method="post">
+        <hr />
 
-    <input type="hidden" asp-for="Id"/>
+        <form asp-action="Edit" method="post">
 
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
 
-    <div class="mb-3">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-        <label asp-for="Nome"></label>
+            <div class="mb-3">
 
-        <input asp-for="Nome" class="form-control"/>
+                <label asp-for="Nome"></label>
 
-    </div>
+                <input asp-for="Nome" class="form-control" />
 
-    <div class="mb-3">
+            </div>
 
-        <label asp-for="Categoria"></label>
+            <div class="mb-3">
 
-        <input asp-for="Categoria" class="form-control"/>
+                <label asp-for="Categoria"></label>
 
-    </div>
+                <input asp-for="Categoria" class="form-control" />
 
-    <div class="mb-3">
+            </div>
 
-        <label asp-for="Descricao"></label>
+            <div class="mb-3">
 
-        <textarea asp-for="Descricao"
-                  class="form-control">
+                <label asp-for="Descricao"></label>
+
+                <textarea asp-for="Descricao" class="form-control">
         </textarea>
 
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Preco"></label>
+
+                <input asp-for="Preco" class="form-control" />
+
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Estoque"></label>
+
+                <input asp-for="Estoque" class="form-control" />
+
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Imagem"></label>
+
+                <input asp-for="Imagem" class="form-control" />
+
+            </div>
+
+            <button class="btn btn-primary">
+
+                Salvar Alterações
+
+            </button>
+
+            <a asp-action="Index" class="btn btn-secondary">
+
+                Voltar
+
+            </a>
+
+        </form>
+
     </div>
+</div>
 
-    <div class="mb-3">
-
-        <label asp-for="Preco"></label>
-
-        <input asp-for="Preco"
-               class="form-control"/>
-
-    </div>
-
-    <div class="mb-3">
-
-        <label asp-for="Estoque"></label>
-
-        <input asp-for="Estoque"
-               class="form-control"/>
-
-    </div>
-
-    <div class="mb-3">
-
-        <label asp-for="Imagem"></label>
-
-        <input asp-for="Imagem"
-               class="form-control"/>
-
-    </div>
-
-    <button class="btn btn-primary">
-
-        Salvar Alterações
-
-    </button>
-
-    <a asp-action="Index"
-       class="btn btn-secondary">
-
-        Voltar
-
-    </a>
-
-</form>
-
-@section Scripts{
+@section Scripts {
 
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
