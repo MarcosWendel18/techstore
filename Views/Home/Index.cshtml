@@ -1,20 +1,16 @@
 ﻿@model IEnumerable<TechStore.Models.Produto>
 
-<div class="bg-dark text-white rounded p-5 mb-5 text-center shadow">
+<div class="hero-section text-center text-white rounded-4 p-5 mb-5">
 
     <h1 class="display-4 fw-bold">
-
         Bem-vindo à TechStore
-
     </h1>
 
     <p class="lead">
-
         Tecnologia e inovação ao seu alcance.
-
     </p>
 
-    <a asp-controller="Home" asp-action="Produtos" class="btn btn-primary btn-lg">
+    <a asp-controller="Home" asp-action="Produtos" class="btn btn-light btn-lg mt-3">
 
         Ver Catálogo
 
@@ -32,47 +28,43 @@
 }
 else
 {
+    <h2 class="mb-4">
+        Últimos Produtos
+    </h2>
+
     <div class="row">
 
-        @foreach (Produto produto in Model)
+        @foreach (var produto in Model)
         {
             <div class="col-md-4 mb-4">
 
-                <div class="produto-card">
+                <div class="card produto-card h-100 shadow-sm">
 
-                    <img class="img-card" src="@Url.Content(
-                             string.IsNullOrWhiteSpace(produto.Imagem)
-                                 ? "~/img/not_defined_img_product.png"
-                                 : produto.Imagem)" style="max-width: 400px; height: 250px; object-fit: cover;" />
+                    <img src="@Url.Content(
+                                             string.IsNullOrWhiteSpace(produto.Imagem)
+                                             ? "~/img/not_defined_img_product.png"
+                                             : produto.Imagem)" class="card-img-top" style="height:220px; object-fit:cover;">
 
                     <div class="card-body">
 
                         <h5 class="card-title">
-
                             @produto.Nome
-
                         </h5>
 
-                        <p class="text-muted">
-
+                        <span class="badge bg-primary mb-2">
                             @produto.Categoria
+                        </span>
 
-                        </p>
-
-                        <p>
-
+                        <p class="card-text">
                             @produto.Descricao
-
                         </p>
 
                     </div>
 
-                    <div class="card-footer">
+                    <div class="card-footer bg-white">
 
-                        <strong>
-
-                            R$ @produto.Preco.ToString(format: "N2")
-
+                        <strong class="text-success">
+                            R$ @produto.Preco.ToString("N2")
                         </strong>
 
                     </div>
@@ -81,6 +73,22 @@ else
 
             </div>
         }
-
     </div>
 }
+
+<div class="bg-light rounded-4 p-5 mt-5">
+
+    <h2>Sobre a TechStore</h2>
+
+    <p class="mb-0">
+
+        A TechStore é uma loja especializada em produtos de tecnologia,
+        oferecendo notebooks, periféricos, acessórios e equipamentos
+        para atender às necessidades dos nossos clientes.
+
+        Este sistema foi desenvolvido utilizando ASP.NET Core MVC
+        como projeto acadêmico.
+
+    </p>
+
+</div>
