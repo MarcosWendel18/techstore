@@ -29,38 +29,23 @@ namespace TechStore.Controllers
             if (usuario == null)
             {
                 ViewBag.Erro = "Usuário inválido";
-                Console.WriteLine("Usuário não encontrado: " + model.Email);
                 return View();
             }
 
             if (usuario.Senha != model.Senha)
             {
                 ViewBag.Erro = "Senha inválida";
-                Console.WriteLine("Senha incorreta para o usuário: " + model.Email);
                 return View();
             }
 
             HttpContext.Session.SetInt32("IdUsuario", usuario.Id);
             HttpContext.Session.SetString("Usuario", usuario.Nome);
 
-            Console.WriteLine("Login realizado com sucesso para o usuário: " + model.Email);
             return RedirectToAction("Index", "Admin");
-        }
-
-        public IActionResult Index()
-        {
-            if (HttpContext.Session.GetString("Usuario") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-
-            return View();
         }
         public IActionResult Logout()
         {
             var usuario = HttpContext.Session.GetString("Usuario");
-
-            Console.WriteLine($"Logout: {usuario}");
 
             HttpContext.Session.Clear();
 

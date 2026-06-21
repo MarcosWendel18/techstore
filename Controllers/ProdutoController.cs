@@ -75,16 +75,6 @@ namespace TechStore.Controllers
                 return View(produto);
             }
 
-            produto.Preco = preco;
-
-            if (produto.Preco <= 0)
-            {
-                ModelState.AddModelError("Preco",
-                    "O preço deve ser maior que zero.");
-
-                return View(produto);
-            }
-
             if (arquivoImagem != null)
             {
                 var nomeArquivo =
@@ -118,9 +108,6 @@ namespace TechStore.Controllers
             {
                 return View(produto);
             }
-
-            produto.Preco = decimal.Parse(Request.Form["Preco"].ToString().Replace(",", "."),
-            System.Globalization.CultureInfo.InvariantCulture);
 
             _context.Produtos.Add(produto);
 
@@ -223,9 +210,6 @@ namespace TechStore.Controllers
                 produtoBanco.Imagem =
                     "/uploads/" + nome;
             }
-
-            produto.Preco = decimal.Parse(Request.Form["Preco"].ToString().Replace(",", "."),
-            System.Globalization.CultureInfo.InvariantCulture);
 
             _context.SaveChanges();
 
