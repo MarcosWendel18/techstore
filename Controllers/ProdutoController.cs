@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TechStore.Data;
 using TechStore.Models;
+using System.Globalization;
 
 namespace TechStore.Controllers
 {
@@ -36,6 +37,7 @@ namespace TechStore.Controllers
 
         public IActionResult Create()
         {
+
             if (HttpContext.Session.GetString("Usuario") == null)
             {
                 return RedirectToAction("Login", "Auth");
@@ -46,18 +48,86 @@ namespace TechStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Produto produto)
+        public IActionResult Create(Produto produto, IFormFile? arquivoImagem)
         {
+
+            var precoTexto = Request.Form["Preco"].ToString();
+
+            if (!decimal.TryParse(
+                    precoTexto,
+                    NumberStyles.Any,
+                    new CultureInfo("pt-BR"),
+                    out decimal preco))
+            {
+                ModelState.AddModelError("Preco",
+                    "Preço inválido.");
+
+                return View(produto);
+            }
+
+            produto.Preco = preco;
+
+            if (produto.Preco <= 0)
+            {
+                ModelState.AddModelError("Preco",
+                    "O preço deve ser maior que zero.");
+
+                return View(produto);
+            }
+
+            produto.Preco = preco;
+
+            if (produto.Preco <= 0)
+            {
+                ModelState.AddModelError("Preco",
+                    "O preço deve ser maior que zero.");
+
+                return View(produto);
+            }
+
+            if (arquivoImagem != null)
+            {
+                var nomeArquivo =
+                    Guid.NewGuid().ToString()
+                    + Path.GetExtension(arquivoImagem.FileName);
+
+                // 1. Defina o caminho da pasta de uploads
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+
+                // 2. Verifique se a pasta existe. Se não existir, crie-a.
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                // 3. Combine o caminho da pasta com o nome do arquivo gerado
+                var filePath = Path.Combine(uploadsFolder, nomeArquivo);
+
+
+                using (var stream =
+                    new FileStream(filePath, FileMode.Create))
+                {
+                    arquivoImagem.CopyTo(stream);
+                }
+
+                produto.Imagem =
+                    "/uploads/" + nomeArquivo;
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(produto);
             }
+
+            produto.Preco = decimal.Parse(Request.Form["Preco"].ToString().Replace(",", "."),
+            System.Globalization.CultureInfo.InvariantCulture);
 
             _context.Produtos.Add(produto);
 
             _context.SaveChanges();
 
             return RedirectToAction(nameof(Index));
+
         }
 
         public IActionResult Edit(int id)
@@ -79,8 +149,27 @@ namespace TechStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Produto produto)
+        public IActionResult Edit(
+    int id,
+    Produto produto,
+    IFormFile? arquivoImagem)
         {
+            var precoTexto = Request.Form["Preco"].ToString();
+
+            if (!decimal.TryParse(
+                    precoTexto,
+                    NumberStyles.Any,
+                    new CultureInfo("pt-BR"),
+                    out decimal preco))
+            {
+                ModelState.AddModelError("Preco",
+                    "Preço inválido.");
+
+                return View(produto);
+            }
+
+            produto.Preco = preco;
+
             if (id != produto.Id)
             {
                 return NotFound();
@@ -104,6 +193,39 @@ namespace TechStore.Controllers
             produtoBanco.Preco = produto.Preco;
             produtoBanco.Estoque = produto.Estoque;
             produtoBanco.Imagem = produto.Imagem;
+
+            if (arquivoImagem != null &&
+    arquivoImagem.Length > 0)
+            {
+                var nome =
+                    Guid.NewGuid().ToString()
+                    + Path.GetExtension(
+                        arquivoImagem.FileName);
+
+                var pasta =
+                    Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        "uploads");
+
+                Directory.CreateDirectory(pasta);
+
+                var caminho =
+                    Path.Combine(pasta, nome);
+
+                using var stream =
+                    new FileStream(
+                        caminho,
+                        FileMode.Create);
+
+                arquivoImagem.CopyTo(stream);
+
+                produtoBanco.Imagem =
+                    "/uploads/" + nome;
+            }
+
+            produto.Preco = decimal.Parse(Request.Form["Preco"].ToString().Replace(",", "."),
+            System.Globalization.CultureInfo.InvariantCulture);
 
             _context.SaveChanges();
 

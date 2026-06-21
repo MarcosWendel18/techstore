@@ -22,8 +22,8 @@ else
                 <div class="card h-100">
 
                     <img src="@(string.IsNullOrWhiteSpace(produto.Imagem)
-                                             ? "/img/sem-imagem.png"
-                                             : produto.Imagem)" class="card-img-top" style="height:220px; object-fit:cover;">
+                             ? Url.Content("~/img/not_defined_img_product.png")
+                             : Url.Content(produto.Imagem))" class="card-img-top" style="height:220px; object-fit:cover;">
 
                     <div class="card-body">
 
@@ -51,7 +51,7 @@ else
 
                         <strong>
 
-                            R$ @produto.Preco
+                            R$ @produto.Preco.ToString(format: "N2")
 
                         </strong>
 

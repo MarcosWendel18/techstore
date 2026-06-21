@@ -1,21 +1,21 @@
 @model TechStore.Models.Produto
 
 <div class="card shadow mb-4" style="min-width: 300px; max-width: 600px; margin: 0 auto;">
-    <div class="card-body text-center"  style="min-width: 500px; max-width: 800px; margin: 0 auto;">
+    <div class="card-body text-center" style="min-width: 500px; max-width: 800px; margin: 0 auto;">
 
 
         <h2>Novo Produto</h2>
 
         <hr />
 
-        <form asp-action="Create" method="post">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
 
             <div asp-validation-summary="ModelOnly" class="text-danger">
             </div>
 
             <div class="mb-3">
 
-                <label asp-for="Nome"></label>
+                <label asp-for="Nome" class="form-label"></label>
 
                 <input asp-for="Nome" class="form-control" style="min-width: 300px;" />
 
@@ -25,9 +25,11 @@
 
             <div class="mb-3">
 
-                <label asp-for="Categoria"></label>
+                <label asp-for="Categoria" class="form-label"></label>
 
                 <input asp-for="Categoria" class="form-control" />
+
+                <span asp-validation-for="Categoria" class="text-danger"></span>
 
             </div>
 
@@ -37,29 +39,37 @@
 
                 <textarea asp-for="Descricao" class="form-control"></textarea>
 
-            </div>
-
-            <div class="mb-3">
-
-                <label asp-for="Preco"></label>
-
-                <input asp-for="Preco" class="form-control" placeholder="R$ 0,00" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
 
             </div>
 
             <div class="mb-3">
 
-                <label asp-for="Estoque"></label>
+                <label asp-for="Preco" class="form-label"></label>
 
-                <input asp-for="Estoque" class="form-control" min="0" max="9999"/>
+                <input name="Preco" id="Preco" class="form-control" placeholder="Ex: 150,50" type="text" />
+
+                <span asp-validation-for="Preco" class="text-danger"></span>
 
             </div>
 
             <div class="mb-3">
 
-                <label asp-for="Imagem"></label>
+                <label asp-for="Estoque" action=""></label>
 
-                <input class="form-control" />
+                <input asp-for="Estoque" class="form-control" min="0" max="9999" />
+
+                <span asp-validation-for="Estoque" class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Imagem" class="form-label"></label>
+
+                <input type="file" name="arquivoImagem" class="form-control" accept="image/*">
+
+                <span asp-validation-for="Imagem" class="text-danger"></span>
 
             </div>
 
@@ -85,5 +95,25 @@
     @{
         await Html.RenderPartialAsync(partialViewName: "_ValidationScriptsPartial");
     }
+
+    <script>
+        
+        document.querySelector("form")
+            .addEventListener("submit", function () {
+
+                hidden.value = texto.value
+                    .replace(/\./g, "")
+                    .replace(",", ".");
+
+            });
+
+        $.validator.methods.number = function (value, element) {
+
+            return this.optional(element)
+                || /^-?\d+(,\d+)?$/.test(value);
+
+        };
+
+    </script>
 
 }

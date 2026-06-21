@@ -7,7 +7,7 @@
 
         <hr />
 
-        <form asp-action="Edit" method="post">
+        <form asp-action="Edit" id="editForm" method="post" enctype="multipart/form-data">
 
             <input type="hidden" asp-for="Id" />
 
@@ -15,7 +15,7 @@
 
             <div class="mb-3">
 
-                <label asp-for="Nome"></label>
+                <label asp-for="Nome" class="form-label"></label>
 
                 <input asp-for="Nome" class="form-control" />
 
@@ -23,7 +23,7 @@
 
             <div class="mb-3">
 
-                <label asp-for="Categoria"></label>
+                <label asp-for="Categoria" class="form-label"></label>
 
                 <input asp-for="Categoria" class="form-control" />
 
@@ -31,7 +31,7 @@
 
             <div class="mb-3">
 
-                <label asp-for="Descricao"></label>
+                <label asp-for="Descricao" class="form-label"></label>
 
                 <textarea asp-for="Descricao" class="form-control">
         </textarea>
@@ -40,15 +40,15 @@
 
             <div class="mb-3">
 
-                <label asp-for="Preco"></label>
+                <label asp-for="Preco" class="form-label"></label>
 
-                <input asp-for="Preco" class="form-control" />
+                <input type="text" name="Preco" value="@Model.Preco.ToString("N2")" class="form-control">
 
             </div>
 
             <div class="mb-3">
 
-                <label asp-for="Estoque"></label>
+                <label asp-for="Estoque" class="form-label"></label>
 
                 <input asp-for="Estoque" class="form-control" />
 
@@ -56,13 +56,23 @@
 
             <div class="mb-3">
 
-                <label asp-for="Imagem"></label>
+                <label asp-for="Imagem" class="form-label"></label>
 
-                <input asp-for="Imagem" class="form-control" />
+                @if (!string.IsNullOrWhiteSpace(Model.Imagem))
+                {
+                    <img src="@Model.Imagem" class="img-thumbnail mb-3" style="max-width:200px;">
+                }
+                else
+                {
+                    <img src="@Url.Content("~/img/not_defined_img_product.png")" class="img-thumbnail mb-3"
+                         style="max-width:200px;">
+                }
+
+                <input type="file" name="arquivoImagem" class="form-control" accept="image/*">
 
             </div>
 
-            <button class="btn btn-primary">
+            <button id="btnSalvar" class="btn btn-primary" disabled>
 
                 Salvar Alterações
 
@@ -78,6 +88,27 @@
 
     </div>
 </div>
+
+<script>
+
+    const formulario = document.getElementById("editForm");
+    const botao = document.getElementById("btnSalvar");
+    const estadoInicial = new FormData(formulario);
+
+    formulario.addEventListener("input", () => {
+        const atual = new FormData(formulario);
+        let mudou = false;
+
+        for (let chave of estadoInicial.keys()) {
+            if (estadoInicial.get(chave) != atual.get(chave)) {
+                mudou = true;
+                break;
+            }
+        }
+
+        botao.disabled = !mudou;
+    });
+</script>
 
 @section Scripts {
 

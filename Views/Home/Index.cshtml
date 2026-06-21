@@ -14,9 +14,7 @@
 
     </p>
 
-    <a asp-controller="Home"
-       asp-action="Produtos"
-       class="btn btn-primary btn-lg">
+    <a asp-controller="Home" asp-action="Produtos" class="btn btn-primary btn-lg">
 
         Ver Catálogo
 
@@ -42,9 +40,10 @@ else
 
                 <div class="produto-card">
 
-                    <img src="@(string.IsNullOrWhiteSpace(produto.Imagem)
-                                             ? "../src/imgs/not_defined_img_product.png"
-                                             : produto.Imagem)" class="card-img-top" style="height:220px; object-fit:cover;">
+                    <img class="img-card" src="@Url.Content(
+                             string.IsNullOrWhiteSpace(produto.Imagem)
+                                 ? "~/img/not_defined_img_product.png"
+                                 : produto.Imagem)" style="max-width: 400px; height: 250px; object-fit: cover;" />
 
                     <div class="card-body">
 
@@ -72,7 +71,7 @@ else
 
                         <strong>
 
-                            R$ @produto.Preco
+                            R$ @produto.Preco.ToString(format: "N2")
 
                         </strong>
 

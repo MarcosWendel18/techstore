@@ -21,7 +21,6 @@ C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\tec
 C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\techstore\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\techstore\obj\Debug\net10.0\scopedcss\bundle\TechStore.styles.css
 C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\techstore\obj\Debug\net10.0\scopedcss\projectbundle\TechStore.bundle.scp.css
-C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\techstore\obj\Debug\net10.0\compressed\d6rgr22lkx-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\techstore\obj\Debug\net10.0\compressed\gn9kxyra6h-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\techstore\obj\Debug\net10.0\compressed\tlke955dij-{0}-bqjiyaj88i-bqjiyaj88i.gz
 C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\techstore\obj\Debug\net10.0\compressed\8y6rkv2ph4-{0}-c2jlpeoesf-c2jlpeoesf.gz
@@ -212,4 +211,5 @@ C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\Tec
 C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\TechStore\obj\Debug\net10.0\TechStore.csproj.AssemblyReference.cache
 C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\TechStore\obj\Debug\net10.0\TechStore.sourcelink.json
 C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\TechStore\obj\Debug\net10.0\TechStore.csproj.Up2Date
-C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\TechStore\obj\Debug\net10.0\compressed\uaft7xkjze-{0}-6a77sthvs3-6a77sthvs3.gz
+C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\TechStore\obj\Debug\net10.0\compressed\d6rgr22lkx-{0}-1sgo4o1z8q-1sgo4o1z8q.gz
+C:\Users\Marcos\OneDrive\Documentos\faculdade\5_Sem\progamacao_web_II\web_II\TechStore\obj\Debug\net10.0\compressed\uaft7xkjze-{0}-s9p7j2gls7-s9p7j2gls7.gz
