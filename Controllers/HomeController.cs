@@ -28,11 +28,21 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Produtos()
+    public IActionResult Produtos(string busca)
     {
-        var produtos = _context.Produtos.ToList();
+        var produtos = _context.Produtos.AsQueryable();
 
-        return View(produtos);
+        if (!string.IsNullOrWhiteSpace(busca?.ToLower()))
+        {
+            produtos = produtos.Where(p =>
+                p.Nome.ToLower().Contains(busca.ToLower()));
+        }
+
+        var lista = produtos.ToList();
+
+        ViewBag.TotalProdutos = lista.Count;
+
+        return View(lista);
     }
 
     public IActionResult Contato()

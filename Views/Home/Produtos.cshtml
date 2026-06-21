@@ -1,59 +1,103 @@
 @model IEnumerable<TechStore.Models.Produto>
 
-<h2 class="title">Nossos Produtos</h2>
+<div class="text-center mb-5">
 
+    <h1 class="display-5 fw-bold">
+
+        Nosso Catálogo
+
+    </h1>
+
+    <p class="lead text-muted">
+
+        Confira nossos produtos disponíveis.
+
+    </p>
+
+    <h3 class="text-muted text-center mb-4 fw-bold">
+
+        @ViewBag.TotalProdutos produtos disponíveis
+
+    </h3>
+
+    <form method="get" class="mb-5">
+
+        <div class="input-group">
+
+            <input type="text" name="busca" class="form-control" placeholder="Pesquisar produto...">
+
+            <button class="btn btn-primary">
+
+                Buscar
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
 
 @if (!Model.Any())
 {
     <div class="alert alert-info">
 
-        Nenhum produto disponível no momento.
+        Nenhum  disponível no momento.
 
     </div>
 }
 else
 {
+
     <div class="row">
 
         @foreach (var produto in Model)
         {
-            <div class="col-md-4 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4">
 
-                <div class="card h-100">
+                <div class="card produto-card h-100 shadow-sm">
 
-                    <img src="@(string.IsNullOrWhiteSpace(produto.Imagem)
-                             ? Url.Content("~/img/not_defined_img_product.png")
-                             : Url.Content(produto.Imagem))" class="card-img-top" style="height:220px; object-fit:cover;">
+                    <img src="@Url.Content(
+                                                                                               string.IsNullOrWhiteSpace(produto.Imagem)
+                                                                                               ? "~/img/not_defined_img_product.png"
+                                                                                               : produto.Imagem)" class="card-img-top"
+                         style="height:250px; object-fit:cover;">
 
                     <div class="card-body">
 
-                        <h5 class="card-title">
+                        <h5 class="card-title fw-bold">
 
                             @produto.Nome
 
                         </h5>
 
-                        <p class="text-muted">
+                        <span class="badge bg-primary mb-3">
 
                             @produto.Categoria
 
-                        </p>
+                        </span>
 
-                        <p>
+                        <p class="card-text text-muted">
 
-                            @produto.Descricao
+                            @(produto.Descricao.Length > 100
+                                ? produto.Descricao.Substring(0, 100) + "..."
+                                : produto.Descricao)
 
                         </p>
 
                     </div>
 
-                    <div class="card-footer">
+                    <div class="card-footer bg-white">
 
-                        <strong>
+                        <div class="d-flex justify-content-between align-items-center">
 
-                            R$ @produto.Preco.ToString(format: "N2")
+                            <span class="fs-5 fw-bold text-success">
 
-                        </strong>
+                                R$ @produto.Preco.ToString("N2")
+
+                            </span>
+
+                        </div>
 
                     </div>
 
@@ -61,6 +105,5 @@ else
 
             </div>
         }
-
     </div>
 }

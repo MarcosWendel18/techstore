@@ -19,6 +19,16 @@ public class AdminController : Controller
 
         ViewBag.TotalProdutos = _context.Produtos.Count();
 
+        ViewBag.TotalCategorias = _context.Produtos
+            .Select(p => p.Categoria)
+            .Distinct()
+            .Count();
+
+        ViewBag.UltimosProdutos = _context.Produtos
+            .OrderByDescending(p => p.Id)
+            .Take(5)
+            .ToList();
+
         return View();
     }
 }

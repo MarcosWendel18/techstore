@@ -1,36 +1,85 @@
-@model TechStore.Models.LoginViewModel
+<div class="login-page">
+    <div class="container">
+        @model TechStore.Models.LoginViewModel
 
-<div class="row justify-content-center" style=" text-align: center;">
-
-    <div class="col-md-5">
-
-        <h2 class="title">Login Administrativo</h2>
-
-        <form asp-action="Login" method="post">
-
-            <div class="mb-3">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" type="email" autocomplete="email" class="form-control" />
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="Senha"></label>
-                <input asp-for="Senha" type="password" autocomplete="current-password" class="form-control" />
-            </div>
-
-            <button class="btn btn-primary">
-                Entrar
-            </button>
-
-        </form>
-
-        @if (ViewBag.Erro != null)
-        {
-            <div class="alert alert-danger mt-3">
-                @ViewBag.Erro
-            </div>
+        @{
+            ViewData["Title"] = "Login";
         }
 
-    </div>
+        <div class="row justify-content-center" style=" text-align: center;">
 
+            <div class="col-md-5">
+
+                <div class="card shadow border-0">
+
+                    <div class="card-body p-5">
+
+                        <div class="text-center mb-4">
+
+                            <div class="text-center mb-3">
+
+                                <div style="font-size:50px;">
+
+                                    🖥️
+
+                                </div>
+
+                            </div>
+
+                            <h2 class="fw-bold">
+
+                                TechStore
+
+                            </h2>
+
+                            <p class="text-muted">
+
+                                Área Administrativa
+
+                            </p>
+
+                        </div>
+
+                        <form method="post" asp-action="Login">
+
+                            <div class="mb-3">
+
+                                <label class="form-label" asp-for="Email">
+
+                                    Usuário
+
+                                </label>
+
+                                <input asp-for="Email" class="form-control" type="email">
+
+                            </div>
+
+                            <div class="mb-4">
+
+                                <label class="form-label" asp-for="Senha">
+
+                                    Senha
+
+                                </label>
+
+                                <input asp-for="Senha" type="password" class="form-control">
+
+                            </div>
+
+                            <button class="btn btn-primary w-100">
+
+                                Entrar
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 </div>
