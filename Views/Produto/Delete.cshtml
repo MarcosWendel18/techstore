@@ -18,8 +18,11 @@
 
     <div class="card-body">
 
-        <img src="https://placehold.co/400x250"/>
-
+       <img src="@Url.Content(
+                                                                                               string.IsNullOrWhiteSpace(Model.Imagem)
+                                                                                               ? "~/img/not_defined_img_product.png"
+                                                                                               : Model.Imagem)" class="produto-imagem">
+ 
         <h4>@Model.Nome</h4>
 
         <p><strong>Categoria:</strong> @Model.Categoria</p>

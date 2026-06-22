@@ -1,42 +1,130 @@
-<h2 class="title">Contato</h2>
+<div class="contato-hero text-center text-white py-5 mb-5">
 
-<div class="form" style="max-width: 600px; margin: 0 auto; background-color: #c4c4c4; padding: 30px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    <div class="container">
 
-    <p style="font-size: 1.2em; text-align: center; max-width: 750px; margin: 0 auto;">
-    Conte-nos sobre suas dúvidas, sugestões ou qualquer assunto relacionado à TechStore. Estamos aqui para ajudar e adoraríamos ouvir de você!
-    </p>
+        <h1 class="display-4 fw-bold">
+            Entre em Contato
+        </h1>
 
-    <form>
+        <p class="lead">
 
-        <div class="mb-3">
+            Estamos à disposição para esclarecer dúvidas,
+            sugestões e solicitações.
 
-            <label>Nome</label>
+        </p>
 
-            <input class="form-control">
+    </div>
+
+</div>
+
+<div class="row mb-5">
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm border-0 h-100">
+
+            <div class="card-body text-center">
+
+                <h4>📍 Endereço</h4>
+
+                <p>
+                    Rua da Tecnologia, 1000<br />
+                    Luziânia - GO
+                </p>
+
+            </div>
 
         </div>
 
-        <div class="mb-3">
+    </div>
 
-            <label>Email</label>
+    <div class="col-md-4">
 
-            <input class="form-control">
+        <div class="card shadow-sm border-0 h-100">
+
+            <div class="card-body text-center">
+
+                <h4>📞 Telefone</h4>
+
+                <p>
+                    (61)9 9171-****
+                </p>
+
+            </div>
 
         </div>
 
-        <div class="mb-3">
+    </div>
 
-            <label>Mensagem</label>
+    <div class="col-md-4">
 
-            <textarea class="form-control"></textarea>
+        <div class="card shadow-sm border-0 h-100">
+
+            <div class="card-body text-center">
+
+                <h4>✉️ E-mail</h4>
+
+                <p>
+                    contato@techstore.com.br
+                </p>
+
+            </div>
 
         </div>
 
-        <button class="btn btn-primary" style="display: block; margin: 0 auto;">
+    </div>
 
-            Enviar
+</div>
 
-        </button>
+<div class="card shadow-sm border-0" style="margin: auto; max-width: 600px; aling-items: center;">
 
-    </form>
+    <div class="card-body p-4">
+
+        @if (TempData["Sucesso"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show">
+
+                @TempData["Sucesso"]
+
+                <button type="button" class="btn-close" data-bs-dismiss="alert">
+                </button>
+
+            </div>
+        }
+
+        <form asp-controller="Home" asp-action="Contato" method="post">
+
+            <div class="mb-3">
+
+                <label>Nome</label>
+
+                <input name="nome" class="form-control" required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>Email</label>
+
+                <input name="email" type="email" class="form-control" required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>Mensagem</label>
+
+                <textarea name="mensagem" class="form-control" rows="5" required></textarea>
+
+            </div>
+
+            <button class="btn btn-primary"
+                    style="display: block; margin: 0 auto;">
+
+                Enviar
+
+            </button>
+
+        </form>
+    </div>
 </div>

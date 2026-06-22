@@ -49,5 +49,15 @@ public class HomeController : Controller
     {
         return View();
     }
+    [HttpPost]
+    public IActionResult Contato(string nome,
+                             string email,
+                             string mensagem)
+    {
+        TempData["Sucesso"] =
+            "Sua mensagem foi enviada com sucesso. Agradecemos seu contato!";
+
+        return RedirectToAction(nameof(Contato));
+    }
 
 }

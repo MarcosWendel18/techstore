@@ -179,7 +179,6 @@ namespace TechStore.Controllers
             produtoBanco.Descricao = produto.Descricao;
             produtoBanco.Preco = produto.Preco;
             produtoBanco.Estoque = produto.Estoque;
-            produtoBanco.Imagem = produto.Imagem;
 
             if (arquivoImagem != null &&
     arquivoImagem.Length > 0)

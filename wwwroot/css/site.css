@@ -57,6 +57,10 @@ body {
 
 /* BARRA DE NAVEGAÇÃO */
 
+.logo{
+  width: 20vh;
+}
+
 .nav-link {
     color: #000000;
     transition: 0.2s;
@@ -134,12 +138,77 @@ body {
     transition: .3s;
 }
 
+.produto-imagem {
+    height: 250px;
+    width: 100%;
+
+    object-fit: contain;
+    padding: 12px;
+
+    background-color: #f8f9fa;
+}
+
 .produto-card:hover img {
     transform: scale(1.03);
 }
 
 .text-success {
     font-size: 1.15rem;
+}
+
+/* SOBRE */
+
+.sobre-hero {
+    background: linear-gradient(
+        135deg,
+        #0d6efd,
+        #0a58ca
+    );
+
+    border-radius: 0 0 20px 20px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, .15);
+}
+
+.sobre-card {
+    transition: .25s;
+}
+
+.sobre-card:hover {
+    transform: translateY(-5px);
+}
+
+.sobre-card h3 {
+    font-weight: 700;
+}
+
+.sobre-card p,
+.sobre-card li {
+    color: #6c757d;
+}
+
+/* CONTATO */
+
+.contato-hero {
+    background: linear-gradient(
+        135deg,
+        #0d6efd,
+        #0a58ca
+    );
+
+    border-radius: 0 0 20px 20px;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.15);
+}
+
+.contato-card {
+    transition: .25s;
+}
+
+.contato-card:hover {
+    transform: translateY(-5px);
 }
 
 /* LOGIN */
