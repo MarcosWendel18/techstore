@@ -4,6 +4,12 @@ Sistema de gerenciamento de produtos desenvolvido em ASP.NET Core MVC como proje
 
 O sistema simula uma loja de eletrônicos, permitindo a visualização pública de produtos e o gerenciamento administrativo através de uma área restrita.
 
+Demonstração Online está disponível em:
+
+http://techstore-marcoswendel.somee.com
+
+⚠️ OBS: Caso tente abrir o site pelo celular edite a URL colocando "http" ao invés de "https" pois a hospedagem gratuita da Somee não possui certificado SSL.
+
 ---
 
 ## 📋 Funcionalidades
@@ -55,7 +61,7 @@ O projeto utiliza:
 
 ---
 
-## 🚀 Como Executar o Projeto
+## 🚀 Como Executar o Projeto na sua máquina
 
 ### 1. Clonar o repositório
 
@@ -105,19 +111,22 @@ Senha:
 
 ### Página Inicial
 
-<img width="1348" height="630" alt="image" src="https://github.com/user-attachments/assets/72ed2273-8d3d-4da1-805c-e53eea9e0d1c" />
+<img width="1350" height="634" alt="image" src="https://github.com/user-attachments/assets/522e4d7d-2338-453c-9b80-e893847d6e58" />
 
 ### Catálogo de Produtos
 
-<img width="1350" height="633" alt="image" src="https://github.com/user-attachments/assets/20af7aef-ec2a-48d7-86a6-cbd28cd6c0a9" />
+<img width="1348" height="632" alt="image" src="https://github.com/user-attachments/assets/52175e37-f365-4595-a651-b960445d4725" />
+
 
 ### Login Administrativo
 
-<img width="1350" height="617" alt="image" src="https://github.com/user-attachments/assets/f4b5e682-8cfb-4b84-bd21-38e37b445d16" />
+<img width="1350" height="632" alt="image" src="https://github.com/user-attachments/assets/9db17bcb-d45e-40b2-87ff-e4391a015b2a" />
+
 
 ### Dashboard Administrativo
 
-<img width="1350" height="630" alt="image" src="https://github.com/user-attachments/assets/01e5415b-fd20-4958-8250-3e330e107b3b" />
+<img width="1348" height="632" alt="image" src="https://github.com/user-attachments/assets/712318e4-39ec-4604-9f91-1d2abc0b5234" />
+
 
 ---
 
